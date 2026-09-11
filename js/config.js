@@ -1,7 +1,7 @@
 "use strict";
 const SITE_CONFIG = Object.freeze({
   whatsapp: "", // TODO: inserir WhatsApp oficial (URL https://wa.me/...)
-  instagram: "", // TODO: inserir Instagram oficial
+  instagram: "https://www.instagram.com/cartorioregistraligarassu/",
   encarregadoDados: "", // TODO: inserir encarregado LGPD
   siteUrl: "", // TODO: inserir domínio oficial para canonical e og:url
   registroDigital: "https://ridigital.org.br/",

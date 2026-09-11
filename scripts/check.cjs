@@ -70,6 +70,7 @@ const {pathToFileURL}=require('node:url');
  if(!await plain.locator('h1').isVisible()||!await plain.locator('a[href="servicos.html"]').first().isVisible())failures.push('No-JS content/navigation failed');
  for(const file of files){
   const html=fs.readFileSync(file,'utf8');
+  if(html.includes('img/logo.png')||!html.includes('img/logocorrigida.png'))failures.push({file,error:'corrected logo reference missing'});
   if(html.includes('mailto:'))failures.push({file,error:'mailto found'});
   const backHome=(html.match(/Voltar para a página inicial/g)||[]).length;
   if((file==='index.html'&&backHome!==0)||(file!=='index.html'&&backHome!==1))failures.push({file,error:'home return count',backHome});
@@ -80,6 +81,7 @@ const {pathToFileURL}=require('node:url');
   }
  }
  const index=fs.readFileSync('index.html','utf8');
+ if((index.match(/principle-track/g)||[]).length!==1)failures.push({file:'index.html',error:'principles strip missing'});
  for(const url of requiredExternalLinks)if(!index.includes(url))failures.push({file:'index.html',error:'external link missing',url});
  const contact=fs.readFileSync('contato.html','utf8');
  if(!contact.includes('class="map-panel"')||!contact.includes('output=embed'))failures.push({file:'contato.html',error:'embedded map missing'});
