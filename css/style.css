@@ -196,7 +196,52 @@ p {
 }
 .arrow {
   display: inline-block;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
   transition: transform var(--transition);
+}
+.arrow::before,
+.arrow::after {
+  content: '';
+  position: absolute;
+  border: 0 solid currentColor;
+}
+.arrow::before {
+  top: 50%;
+  left: 50%;
+  width: 0.82em;
+  border-top-width: 0.1em;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.arrow::after {
+  top: 0.17em;
+  right: 0.17em;
+  width: 0.44em;
+  height: 0.44em;
+  border-width: 0.1em 0.1em 0 0;
+}
+.arrow--left::before {
+  width: 0.66em;
+  transform: translate(-50%, -50%);
+}
+.arrow--left::after {
+  top: 50%;
+  left: 0.24em;
+  right: auto;
+  border-width: 0 0 0.1em 0.1em;
+  transform: translateY(-50%) rotate(45deg);
+}
+.arrow--down::before {
+  content: none;
+}
+.arrow--down::after {
+  top: 50%;
+  left: 50%;
+  right: auto;
+  transform: translate(-50%, -70%) rotate(135deg);
 }
 .button:hover .arrow,
 .text-link:hover .arrow {

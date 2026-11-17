@@ -272,7 +272,10 @@
       continueLink.className = 'text-link';
       continueLink.target = '_blank';
       continueLink.rel = 'noopener noreferrer';
-      continueLink.textContent = 'Continuar no Gmail ↗';
+      const arrow = document.createElement('span');
+      arrow.className = 'arrow';
+      arrow.setAttribute('aria-hidden', 'true');
+      continueLink.append('Continuar no Gmail', arrow);
       $('#form-status').after(continueLink);
     }
     continueLink.href = gmail.href;
